@@ -1,0 +1,6 @@
+.deps
+.libs
+Makefile
+Makefile.in
+lib*
+mw_client.h

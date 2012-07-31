@@ -1,0 +1,48 @@
+
+- Storage service
+  - why does the server crash on some load requests??
+
+- Messages
+  - Handshake is more complex than implemented, with login
+    information/token
+
+- Directory Service
+
+- Aware Service
+  - remove getText stuff, make the clients records that stuff
+
+- IM Service
+  - new Client Type, 0x00c0ffee  (0x00 CO FF EE)
+  - data message type 0xdecafbad	feature negotiation
+	- subtype 0x01		offer named features
+	OPAQUE
+		COUNT
+			STRING
+			ADDTL
+
+	- subtype 0x02		accept named features
+	OPAQUE
+		COUNT
+			STRING
+			ADDTL
+
+	- subtype 0x03		remove named features
+	OPAQUE
+		COUNT
+			STRING
+		
+	- example features:
+		"st.plaintext"
+		"st.typing"
+		"nb.html"
+		"nb.mime"
+		"nb.topic"
+		"mw.encrypt"
+		"mw.
+
+  - data message type 0xdeadbeef
+	- subtype 0x01		named feature message
+	OPAQUE
+		STRING		name of feature
+		OPAQUE		data for message
+

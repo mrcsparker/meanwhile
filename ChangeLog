@@ -1,0 +1,187 @@
+version 1.1.0 (2008-01-04)
+
+	Bug Fixes
+	- Bug #1576187 Errant return in cipher.c
+	- Bug #1626349 Buddy list shows wrong status
+	- Patch #1863383 strict-prototypes warning fix
+	
+	Features
+	- added flag in status enum for mobile users
+	
+version 1.0.2 (2005-12-29)
+
+	Bug Fixes
+	- fix error 0x8000001f when inviting Sametime Connect user to a
+	chat (stopped offering encryption on conferences)
+	- Bug #1390997 crash when accepting conference invite
+	
+version 1.0.1 (2005-12-16)
+
+	Bug Fixes
+	- fix C++ ifdefs in headers, removed C++ keywords in variable
+	names
+	- Bug #1379550 meanwhile 1.0.0, login verification unavailable
+	error
+
+version 1.0.0 (2005-12-13)
+	
+	- using shared library versioning, 1:0:0	
+	- using MPI code from http://www.cs.dartmouth.edu/~sting/mpi/ as a
+	replacement for the GMP dependancy
+
+	Features
+	- support for sending legacy invitations via Place service
+	- Bug #1352944 Gaim crashes when I try to logon to Sametime
+	
+	Bug Fixes
+	- Crash and other problems with joining a Place
+	
+version 0.5.0 (2005-10-28)
+
+	- added meanwhile-doc package, with html and latex docs and
+	sample code
+	
+	Features
+	- Automatically breaks up large messages for transport (using
+	NotesBuddy multi-segment messages)
+	- Support for DH RC2/128 channel encryption
+	- Support for DH RC2/128 login encryption
+	- RFE #1307892 Support for Announcements
+	- Support for chats via the Places service
+	
+	Bug Fixes
+	- Bug #1239210 Unspecified fatal error when VPN disconnects
+	- Fixed memleaks and crashes in the aware service (which needs
+	to be re-written sometime soon)
+	
+version 0.4.2 (2005-05-27)
+	
+	Features
+	- RFE #1054813 Privacy support
+	- Support for updates from attribute deletes in aware service
+	
+	Bug Fixes
+	- Bug #1194631 Windows file transfer crashes gaim
+	- Bug #1200841 Sametime 2.0 clients responses not seen
+	
+version 0.4.1 (2005-05-01)
+
+	Features
+	- Support for File Transfers (mwServiceFileTransfer)
+	- Support for getting/setting Aware attributes
+	- Support sending the LoginCont message in response to a
+	LoginRedirect
+	- Support for multi-segment messages from NotesBuddy (fixes
+	problems with large MIME, text, and HTML messages)
+	
+	Bug Fixes
+	- Bug #1192747 Crash when someone initiate talk with me
+	- Bug #1168421 crash when opening specific contacts
+	- Problem with NAB group members not being announced after the
+	initial group status update
+	
+version 0.4.0 (2005-03-18)
+
+	- installed header file names have changed to now have a "mw_"
+	prefix
+
+	Features
+	- RFE #994716 Support for Server-side Groups to Aware Service
+	- RFE #1077794 NotesBuddy style formatting
+	- Support for resolve service
+
+	Bug Fixes
+	- Bug #1008335 Error in common.c when compiling on x86_64
+	- Bug #1021353 meanwhile won't build w/Sun GNOME2
+	- Bug #1036056 meanwhile-CRITICAL - when add a buddy to my list
+	- Bug #1089971 pkg-config file does not list liner flags
+	- Bug #1110902 configure shouldn't set CFLAGS
+	- Dumb crash when removing non-existant members from an aware list
+	
+version 0.3.1 (2004-08-05)
+
+	- Fix [989872] Version incompatibility (0x80000200 errors)
+	- Fix some st_list parsing problems
+
+version 0.3.0 (2004-06-28)
+		
+	2004-06-27: Fixed bug #980572. Thanks a lot to Joe Marcus Clarke
+	for all the debugging help!
+
+	* common.c: privacy list has a name in it, who knew?
+
+	* st_list.c: revamped the parsing and generation of sametime's
+	buddy list format. Seems to be working alright, but there can be
+	some serious ugliness with commas in user ids and in aliases.
+	
+	2004-06-23: Sametime blist format parser/generator seems to be
+	working.
+
+	* common.c: fixed a nasty crash/bug discovered by nosnilmot. Base
+	type serialization wasn't correctly checking available buffer
+	lengths, leading to unhealthy overruns. Won't happen anymore.
+	
+	* srvc_aware.c: fixed nasty bug in removing entries from a list
+	which made the whole service unstable.
+
+	* st_list.c, st_list.h: added to CVS. Simple API for loading and
+	storing a heirarchy of group/users into a sametime format list.
+	
+	2004-06-21: Bug fix and API cleanup.
+
+	* service.c, service.h: refinements to service start/stop and
+	state checking
+	
+	* srvc_im.c: fixed a reported bug where messages were not being
+	rejected even when the user was in mwStatus_BUSY. Thanks jdob!
+	
+	2004-06-18: Hopefully fixed bug #968973, requires testing by
+	someone normally afflicted
+
+	* channel.c, channel.h: added mwChannel_markActive
+	
+	* service.c, service.h: added start/stop, as well as related state
+	tracking calls and utility functions
+	
+	* session.c: effectively rewrote mwSession_recv
+	
+	* srvc_store.c, srvc_store.h: added to CVS
+	
+	2004-06-15: Reworking services to follow a start/stop system.
+	Moving service structures into a non-visible space.  Added support
+	for the storage service.  Meanwhile now has its own client type
+	identifier, 0x1700, and defaults to using that rather than the
+	Java App identifier of 0x1003
+	
+version 0.2  Chris O'Brien  <siege@preoccupied.net>
+
+	2004-05-17: Refactoring service and channel related code out of
+	session.[ch], started using g_return_* functions.  Moved
+	meanwhile-gaim plugin into its own module, for my own sanity.
+
+version 0.1  Chris O'Brien  <siege@preoccupied.net>
+	
+	2004-04-23: Release against Gaim 0.77, tagged v0_77
+
+	2004-04-20: Changed buddy list status text to be their message
+	rather than the name of their state.  If there's no status
+	message, it still falls back to the state name.  Updates to match
+	Gaim 0.77cvs.  Chat rejection should be working now; Admin
+	messages might work.  Difficult to test as only admins can send
+	those messages.
+
+	2004-04-14: Added meanwhile-gaim.spec, tagged it into v0_76.
+	First rpm released
+	
+	2004-04-05: Release against Gaim 0.76, tagged v0_76
+
+	2004-02-25: Added Features: create a conference with another user.
+	This seems to work with pretty much any client on the receiving
+	end; accept a conference from another user.  This seems to work
+	with only some clients. eg: Sanity works, ICT doesn't.
+	
+	2004-02-23: First import to IIOSB CVS
+
+	Features: working buddy list; status and away messages; idle
+	timer; send/receive im; encryption support; lovable icon
+
